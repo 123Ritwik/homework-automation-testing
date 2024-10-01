@@ -3,13 +3,17 @@ name: CI pipeline
 on:
   push:
     branches:
-      - main  # Triggers on commits to any branch
+      - main
   pull_request:
     branches:
-      - main  # Triggers on pull requests to any branch
+      - main
   schedule:
-    - cron: '0 18 * * *'  # Runs at 12:00 AM UTC (adjust for your timezone if needed)
-  workflow_dispatch:  # Allows manual triggering
+    - cron: '30 6 * * *'  # Runs at 12:00 PM IST (6:30 AM UTC)
+  workflow_dispatch:
+
+env:
+  BASE_URL: https://example.com
+  PORT: 8080
 
 jobs:
   build:
@@ -27,6 +31,9 @@ jobs:
 
       - name: Build and Test with Maven
         run: mvn clean verify --file pom.xml
+        env:
+          BASE_URL: ${{ env.BASE_URL }}
+          PORT: ${{ env.PORT }}
 
       - name: Cucumber Report
         if: always()
