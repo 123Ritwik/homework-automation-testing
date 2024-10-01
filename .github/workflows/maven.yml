@@ -30,7 +30,7 @@ jobs:
           cache: maven
 
       - name: Build and Test with Maven
-        run: mvn clean verify -DskipTests --file pom.xml
+        run: mvn clean verify --file pom.xml
         env:
           BASE_URL: ${{ env.BASE_URL }}
           PORT: ${{ env.PORT }}
