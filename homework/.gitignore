@@ -1,0 +1,29 @@
+# Maven
+/target/
+
+
+# Eclipse
+/.settings/
+/.classpath
+/.project
+/.factorypath
+/.apt_generated/
+/logs/
+
+# Intellij
+/.idea/
+/*.iml
+/*.iws
+/logs/
+
+#vscode
+/.vscode/
+
+# gnupg keyring
+/.gnupg
+
+#nodejs
+/node_modules/
+
+#flattened POMs
+/.flattened-pom.xml

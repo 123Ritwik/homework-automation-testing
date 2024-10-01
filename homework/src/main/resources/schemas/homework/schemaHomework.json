@@ -1,0 +1,145 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "default": {},
+  "title": "Root Schema",
+  "required": [
+    "assignedBy",
+    "assignedTo",
+    "section",
+    "campus",
+    "session",
+    "course",
+    "subject",
+    "workType",
+    "homeWorkDate",
+    "homeDueDate",
+    "notes",
+    "fileName",
+    "fileContent"
+  ],
+  "properties": {
+    "assignedBy": {
+      "type": "string",
+      "default": "",
+      "title": "The assignedBy Schema",
+      "examples": [
+        "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+      ]
+    },
+    "assignedTo": {
+      "type": "string",
+      "default": "",
+      "title": "The assignedTo Schema",
+      "examples": [
+        "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+      ]
+    },
+    "section": {
+      "type": "string",
+      "default": "",
+      "title": "The section Schema",
+      "examples": [
+        "A"
+      ]
+    },
+    "campus": {
+      "type": "string",
+      "default": "",
+      "title": "The campus Schema",
+      "examples": [
+        "Delhi"
+      ]
+    },
+    "session": {
+      "type": "string",
+      "default": "",
+      "title": "The session Schema",
+      "examples": [
+        "2022-2023"
+      ]
+    },
+    "course": {
+      "type": "string",
+      "default": "",
+      "title": "The course Schema",
+      "examples": [
+        "V"
+      ]
+    },
+    "subject": {
+      "type": "string",
+      "default": "",
+      "title": "The subject Schema",
+      "examples": [
+        "Math"
+      ]
+    },
+    "workType": {
+      "type": "string",
+      "default": "",
+      "title": "The workType Schema",
+      "examples": [
+        "CW"
+      ]
+    },
+    "homeWorkDate": {
+      "type": "string",
+      "default": "",
+      "title": "The homeWorkDate Schema",
+      "examples": [
+        "2023-08-25T06:07:25.83Z"
+      ]
+    },
+    "homeDueDate": {
+      "type": "string",
+      "default": "",
+      "title": "The homeDueDate Schema",
+      "examples": [
+        "2023-08-25T06:07:25.83Z"
+      ]
+    },
+    "notes": {
+      "type": "string",
+      "default": "",
+      "title": "The notes Schema",
+      "examples": [
+        "Hi This is new home "
+      ]
+    },
+    "fileName": {
+      "type": "string",
+      "default": "",
+      "title": "The fileName Schema",
+      "examples": [
+        "Please give file name"
+      ]
+    },
+    "fileContent": {
+      "type": "string",
+      "default": "",
+      "title": "The fileContent Schema",
+      "examples": [
+        "Provide base64 encoded file content"
+      ]
+    }
+  },
+  "examples": [
+    {
+      "assignedBy": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "assignedTo": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "section": "A",
+      "campus": "Delhi",
+      "session": "2022-2023",
+      "course": "V",
+      "subject": "Math",
+      "workType": "CW",
+      "homeWorkDate": "2023-08-25T06:07:25.83Z",
+      "homeDueDate": "2023-08-25T06:07:25.83Z",
+      "notes": "Hi This is new home ",
+      "fileName": "Please give file name",
+      "fileContent": "Provide base64 encoded file content"
+    }
+  ]
+}

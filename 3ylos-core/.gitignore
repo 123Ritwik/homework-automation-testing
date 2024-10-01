@@ -1,0 +1,19 @@
+# Maven
+/target/
+
+
+# Eclipse
+/.settings/
+/.classpath
+/.project
+/.factorypath
+/.apt_generated/
+
+# Intellij
+/.idea/
+/*.iml
+/*.iws
+
+
+#flattened POMs
+/.flattened-pom.xml

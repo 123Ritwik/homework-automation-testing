@@ -1,0 +1,534 @@
+openapi: 3.0.1
+info:
+  title: Common Management API
+  description: This API exposes endpoints to Common.
+  termsOfService: https://www.3ylos.com
+  contact:
+    name: Abhinit
+    url: https://www.3ylos.com
+    email: abhinit@gmail.com
+  license:
+    name: MIT License
+    url: https://choosealicense.com/licenses/mit/
+  version: "1.0"
+servers:
+- url: http://localhost:8084
+  description: Generated server url
+tags:
+- name: File Controller Api
+  description: File Controller Api
+- name: Homework Api
+  description: Homework Management Api
+- name: Code
+  description: fetching details of static data
+paths:
+  /hmwk/homeworks/{homeworkId}:
+    get:
+      tags:
+      - Homework Api
+      summary: Get Homework
+      description: Get Homework
+      operationId: getHomework_1
+      parameters:
+      - name: homeworkId
+        in: path
+        description: Homework row id
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "500":
+          description: Internal Server Error
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "422":
+          description: Unprocessable Entity
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "400":
+          description: Bad Request
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "406":
+          description: Not Acceptable
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HomeworkModel'
+    put:
+      tags:
+      - Homework Api
+      summary: Update Homework
+      description: Update Homework
+      operationId: updateHomework
+      parameters:
+      - name: homeworkId
+        in: path
+        description: Homework row id
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HomeworkModel'
+        required: true
+      responses:
+        "500":
+          description: Internal Server Error
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "422":
+          description: Unprocessable Entity
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "400":
+          description: Bad Request
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "406":
+          description: Not Acceptable
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HomeworkModel'
+    delete:
+      tags:
+      - Homework Api
+      summary: Delete Homework
+      description: Delete Homework
+      operationId: deleteHomework
+      parameters:
+      - name: homeworkId
+        in: path
+        description: Homework row id
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "500":
+          description: Internal Server Error
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "422":
+          description: Unprocessable Entity
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "400":
+          description: Bad Request
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "406":
+          description: Not Acceptable
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "204":
+          description: No Content
+  /hmwk/homeworks:
+    get:
+      tags:
+      - Homework Api
+      summary: Get Homework
+      description: Get Homework
+      operationId: getHomework
+      parameters:
+      - name: page
+        in: query
+        description: Page size
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 0
+      - name: size
+        in: query
+        description: Data size
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 50
+      - name: direction
+        in: query
+        description: Get data ascending and descending direction
+        required: false
+        schema:
+          type: string
+          enum:
+          - ASCENDING
+          - DESCENDING
+      - name: section
+        in: query
+        description: section
+        required: false
+        schema:
+          type: string
+      - name: session
+        in: query
+        description: session
+        required: false
+        schema:
+          type: string
+      - name: course
+        in: query
+        description: course
+        required: false
+        schema:
+          type: string
+      - name: subject
+        in: query
+        description: subject
+        required: false
+        schema:
+          type: string
+      - name: homeWorkDate
+        in: query
+        description: homeWorkDate
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: assignedBy
+        in: query
+        description: assignedBy
+        required: false
+        schema:
+          type: string
+          format: uuid
+      - name: assignedTo
+        in: query
+        description: assignedTo
+        required: false
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "500":
+          description: Internal Server Error
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "422":
+          description: Unprocessable Entity
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "400":
+          description: Bad Request
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "406":
+          description: Not Acceptable
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageResponseHomeworkModel'
+    post:
+      tags:
+      - Homework Api
+      summary: Homework
+      description: New Homework
+      operationId: homework
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HomeworkModel'
+        required: true
+      responses:
+        "500":
+          description: Internal Server Error
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "422":
+          description: Unprocessable Entity
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "400":
+          description: Bad Request
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "406":
+          description: Not Acceptable
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HomeworkModel'
+  /core/file/uploadFile:
+    post:
+      tags:
+      - File Controller Api
+      summary: Upload File
+      description: New File Upload
+      operationId: uploadFile
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              required:
+              - file1
+              type: object
+              properties:
+                file1:
+                  type: string
+                  format: binary
+        required: true
+      responses:
+        "500":
+          description: Internal Server Error
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "422":
+          description: Unprocessable Entity
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "400":
+          description: Bad Request
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "406":
+          description: Not Acceptable
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FileModel'
+  /core/codes/{codeType}:
+    get:
+      tags:
+      - Code
+      summary: Get all codes with respective codeTypes
+      operationId: getCode
+      parameters:
+      - name: codeTypeValue
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "500":
+          description: Internal Server Error
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "422":
+          description: Unprocessable Entity
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "400":
+          description: Bad Request
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "406":
+          description: Not Acceptable
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Code'
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code details while code executions.
+          example: "001"
+        message:
+          type: string
+          description: Error details while code executions.
+          example: Error message
+        timestamp:
+          type: string
+          description: Error current system time
+          format: date-time
+      description: Contains error details used within the applications.
+    HomeworkModel:
+      required:
+      - assignedBy
+      - assignedTo
+      - campus
+      - id
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique homework Row Id
+          format: uuid
+          readOnly: true
+        assignedBy:
+          type: string
+          description: Provide Id who given homework
+          format: uuid
+        assignedTo:
+          type: string
+          description: Provide Id to whome homework assigned
+          format: uuid
+        section:
+          type: string
+          description: Choose the section name
+          example: A
+        campus:
+          type: string
+          description: Choose the section campus
+          example: Delhi
+        session:
+          type: string
+          description: "Admission years, the defaults value is current years."
+          example: 2022-2023
+        course:
+          type: string
+          description: Choose the course name
+          example: V
+        subject:
+          type: string
+          description: Choose the subject
+          example: Math
+        workType:
+          type: string
+          description: Work type eg HW or CW
+          example: CW
+        homeWorkDate:
+          type: string
+          description: Home work date
+          format: date-time
+          example: 2023-08-25T06:07:25.83Z
+        homeDueDate:
+          type: string
+          description: Home work due date
+          format: date-time
+          example: 2023-08-25T06:07:25.83Z
+        notes:
+          type: string
+          description: Home work description if required
+          example: 'Hi This is new home '
+        fileName:
+          type: string
+          description: Provide file name if required
+          example: Please give file name
+        fileContent:
+          type: string
+          description: Upload file content
+          example: Provide base64 encoded file content
+      description: New Homework request
+    FileModel:
+      type: object
+      properties:
+        fileName:
+          type: string
+          description: Choose file name
+          example: abc.pdf
+        fileType:
+          type: string
+          description: 'file type '
+          example: pdf
+        fileContent:
+          type: string
+          description: encoded file content
+          example: 0d323c
+      description: Contains the all details for File
+    PageResponseHomeworkModel:
+      type: object
+      properties:
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/HomeworkModel'
+        page:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        totalElements:
+          type: integer
+          format: int64
+    Code:
+      type: object
+      properties:
+        code:
+          type: string
+        discription:
+          type: string

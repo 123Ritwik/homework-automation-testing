@@ -1,0 +1,42 @@
+name: CI pipeline
+
+on:
+  push:
+    branches:
+      - main  # Triggers on commits to any branch
+  pull_request:
+    branches:
+      - main  # Triggers on pull requests to any branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Build and Test with Maven
+        run: mvn clean verify --file pom.xml
+
+      - name: Cucumber Report
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: cucumber-report
+          path: homework/target/cucumber/cucumber-reports.html
+
+      - name:  Report
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: reports
+          path: |
+            homework/target/reports/cucumber-html-reports
+     
